@@ -6,7 +6,7 @@ couchdb supports nearly all features of couchdb 0.8 except bulk document creatio
 
 = The Database class =
 
-The org.jcouchdb.db.Database class is your main point of interaction with couchdb. 
+The [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/db/Databas.java org.jcouchdb.db.Database] class is your main point of interaction with couchdb. 
 Let's see some simple code:
 
 {{{
