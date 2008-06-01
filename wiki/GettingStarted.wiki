@@ -9,7 +9,7 @@ This page describes what you need to use couchdb in your java application with j
 
 First of all you need couchdb. jcouchdb is meant to run with couchdb 0.8+ currently only available per couchdb SVN. (the 0.8 version contains some breaking changes)
 
-You'll need some libraries jcouchdb depends on. you can get these libraries either with the [http://jcouchdb.googlecode.com/files/jcouchdb-0.1-src.zip source download] or from SVN by either retrieving the complete project
+You'll need some libraries jcouchdb depends on. you can get these libraries either with the [http://jcouchdb.googlecode.com/files/jcouchdb-0.2-src.zip source download] or from SVN by either retrieving the complete project
 {{{
 svn co http://jcouchdb.googlecode.com/svn/trunk jcouchdb
 }}}
