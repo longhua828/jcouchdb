@@ -3,7 +3,7 @@ How to use jcouchdb in your java applications.
 
 = Introduction =
 
-couchdb supports nearly all features of couchdb 0.8 except bulk document creation which will soon follow.
+Jcouchdb should support all features of CouchDB 0.8.
 
 = The Database class =
 
