@@ -34,8 +34,7 @@ Jcouchdb depends on the [http://code.google.com/p/svenson/ svenson JSON library]
 
 To fully understand the possibilities of working with svenson you should go and read the [http://code.google.com/p/svenson/w/list svenson documentation]. Here I will only show you the jcouchdb specific parts.
 
-First there is the [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/document/Document.java org.jcouchdb.document.Document] interface which you can implement in your Documents. You don't have to implement it, but your classes will need to have a property "_id" and a property "_rev" which are also the prerequisites for working with CouchDB.
-
+First there is the [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/document/Document.java org.jcouchdb.document.Document] interface which you can implement in your Documents. 
 {{{
 package org.jcouchdb.document;
 
@@ -65,3 +64,38 @@ public interface Document
 
 }
 }}}
+
+There is also a convenience base class [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/document/BaseDocument.java org.jcouchdb.document.BaseDocument] which implements 
+the Document interface and [http://svenson.googlecode.com/svn/trunk/src/org/svenson/DynamicProperties.java org.svenson.DynamicProperties] which allows its subclasses to have both java properties and additional arbritrary properties.
+
+=== Design documents ===
+
+[http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/document/DesignDocument.java org.jcouchdb.document.DesignDocument] lets you work with CouchDB design documents. There is also a small utility class [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/util/CouchDBUpdater.java org.jcouchdb.util.CouchDBUpdater] that lets you keep the design document definitions outside of CouchDB and update CouchDB with them. There is also an optional spring integration for it ( [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/spring/SpringCouchDBUpdater.java org.jcouchdb.spring.SpringCouchDBUpdater] ) which you can define as bean in your spring context. There might also be jcouchdb schema to provide a much easier syntax then you currently need for that.
+
+{{
+    <bean class="org.jcouchdb.spring.SpringCouchDBUpdater">
+        <property name="database" ref="couchDBDatabase" />
+        <property name="designDocuments">
+            <list>
+                <bean class="org.jcouchdb.document.DesignDocument">
+                    <property name="id" value="posts" />
+                    <property name="views">
+                        <map>
+                            <entry key="byUser">
+                                <bean class="org.jcouchdb.db.View">
+                                    <property name="map">
+                                        <value><![CDATA[
+                                            ... javascript code here ...     
+                                        ]]></value>
+                                    </property>
+                                </bean>
+                            </entry>
+                        </map>
+                    </property>
+                </bean>
+                ... more design documents here ...
+            </list>
+        </property>
+    </bean>
+
+}}
