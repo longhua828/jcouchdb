@@ -25,12 +25,11 @@ Let's see some simple code:
 
 This creates a simple Document with two fields based on a !HashMap. Note that the database has to already exist for it to work. Databases can be created via Futon or with the [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/db/ServerImpl.java org.jcouchdb.db.ServerImpl] class.
 
-
 == Documents ==
 
-jcouchdb offers many different ways of using java classes as couchdb documents
+Jcouchdb offers many different ways of using java classes as !CouchDB documents. 
+You can work totally schema-free and without any type constraint and use a Java object graph composed of list and map instances or you can use your own Java classes with strict type constraints or you can have something in between. it's your choice.
 
+Jcouchdb depends on the [http://code.google.com/p/svenson/ svenson JSON library] which in fact used to be a part of jcouchdb.
 
-My goal in writing jcouchdb was to be able to directly get POJOs out of couchdb without losing the ability to use document that are partly or totally dynamic. jcouchdb uses its own json parser / generator to achieve this goal (in fact the json parser / generator might be just as usable without couchdb ).
-
-The jon parser/generator offers some interfaces, base classes and annotations you can use to configure what types the couchdb documents are parsed to.
+To fully understand the possibilities of working with svenson you should go and read the [http://code.google.com/p/svenson/w/list svenson documentation]. Here I will only show you the jcouchdb specific parts.
