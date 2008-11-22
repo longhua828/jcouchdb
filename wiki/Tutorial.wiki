@@ -117,13 +117,14 @@ import org.jcouchdb.document.ViewResult;
     ViewResult<Map> result2 = db.queryView("myDesignDocId/myViewId", Map.class, 
         new Options().count(10));
 
-    // you can also specify an [http://code.google.com/p/svenson/wiki/ParsingJSON svenson JSONParser] to parse the results with. This gives you optimal control over how the JSON is turned into java objects
+    // you can also specify a svenson JSONParser to parse the results with. This gives you optimal control over how the JSON is turned into java objects
     ViewResult<Map> result2 = db.queryView("myDesignDocId/myViewId", null, parser);
 
 }}}
 
 The view result gives you access to the total rows and offset of the query and to the converted documents. 
 
+See the [http://code.google.com/p/svenson/wiki/ParsingJSON svenson JSONParser documentation] of how to use the JSONParser in svenson.
 
 == Examples in tests ==
 
