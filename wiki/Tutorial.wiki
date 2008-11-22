@@ -90,6 +90,7 @@ the Document interface and [http://svenson.googlecode.com/svn/trunk/src/org/sven
                                     </property>
                                 </bean>
                             </entry>
+                            ... more views here ...
                         </map>
                     </property>
                 </bean>
