@@ -72,7 +72,7 @@ the Document interface and [http://svenson.googlecode.com/svn/trunk/src/org/sven
 
 [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/document/DesignDocument.java org.jcouchdb.document.DesignDocument] lets you work with CouchDB design documents. There is also a small utility class [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/util/CouchDBUpdater.java org.jcouchdb.util.CouchDBUpdater] that lets you keep the design document definitions outside of CouchDB and update CouchDB with them. There is also an optional spring integration for it ( [http://jcouchdb.googlecode.com/svn/trunk/src/org/jcouchdb/spring/SpringCouchDBUpdater.java org.jcouchdb.spring.SpringCouchDBUpdater] ) which you can define as bean in your spring context. There might also be jcouchdb schema to provide a much easier syntax then you currently need for that.
 
-{{
+{{{
     <bean class="org.jcouchdb.spring.SpringCouchDBUpdater">
         <property name="database" ref="couchDBDatabase" />
         <property name="designDocuments">
@@ -98,4 +98,4 @@ the Document interface and [http://svenson.googlecode.com/svn/trunk/src/org/sven
         </property>
     </bean>
 
-}}
+}}}
