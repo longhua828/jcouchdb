@@ -111,11 +111,11 @@ import org.jcouchdb.document.ViewResult;
     ...
 
     // assume db to be a jcouchdb database object
-    ViewResult<Map> result = db.queryView("myDesignDocId/myViewId", Map.class);
+    ViewResult<Map> result = db.queryView("myDesignDocId/myViewId", Map.class, null, null);
 
     // query with options
     ViewResult<Map> result2 = db.queryView("myDesignDocId/myViewId", Map.class, 
-        new Options().count(10));
+        new Options().count(10), null);
 
     // you can also specify a svenson JSONParser to parse the results with. This gives you optimal control over how the JSON is turned into java objects
     ViewResult<Map> result2 = db.queryView("myDesignDocId/myViewId", null, parser);
