@@ -141,8 +141,8 @@ You just have to set up a directory structure with all your design documents and
 
 {{{
 
-couchdb-views
-    foo
+couchdb-views/
+    foo/
         byName.map.js
         byName.reduce.js
 
@@ -163,3 +163,4 @@ import org.jcouchdb.util.CouchDBUpdater;
 
 The updater will go through every definition he finds and check if the design document exists in the couchdb database exactly like he found it. if not, he will updated the design document.
 
+There also exists org.jcouchdb.spring.SpringCouchDBUpdater, which is a integrates the CouchDBUpdater with the [http://springframework.org/ spring framework]. Note that the spring jars are not included as depedencies so you will need to add them to your application yourself.
