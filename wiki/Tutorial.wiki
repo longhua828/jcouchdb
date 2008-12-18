@@ -132,3 +132,34 @@ See the [http://code.google.com/p/svenson/wiki/ParsingJSON svenson JSONParser do
 == Examples in tests ==
 
 Jcouchdb comes with a set of unit tests which you can also take a look at to see examples of how to use jcouchdb (most importantly [http://jcouchdb.googlecode.com/svn/trunk/test/org/jcouchdb/db/LocalDatabaseTestCase.java org.jcouchdb.db.LocalDatabaseTestCase] which runs some integration tests against local CouchDB server.
+
+== CouchdDBUpdater ==
+
+In 0.7.1 I've added a small tool class that can help you update your design documents / views while being able to edit them in your favourite editor.
+
+You just have to set up a directory structure with all your design documents and views in them, like this:
+
+{{{
+
+couchdb-views
+    foo
+        byName.map.js
+        byName.reduce.js
+
+}}}
+
+you need one root directory in which you create a folder per design document. the name of the folder will be the name of the design document. Then you put a ".map.js" file for every map function and a ".reduce.js" for every reduce function and do something like this.
+
+{{{ 
+import org.jcouchdb.util.CouchDBUpdater;
+    ...
+    // assume db to be a Database object pointing to the database you want to update and
+    // dir a File object pointing to the directory structure desribed above.
+    CouchDBUpdater updater = new CouchDBUpdater();
+    updater.setDatabase(db);
+    updater.setDesignDocumentDir(dir);
+    updater.updateDesignDocuments();
+}}}
+
+The updater will go through every definition he finds and check if the design document exists in the couchdb database exactly like he found it. if not, he will updated the design document.
+
