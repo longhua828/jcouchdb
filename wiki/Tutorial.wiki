@@ -133,6 +133,20 @@ See the [http://code.google.com/p/svenson/wiki/ParsingJSON svenson JSONParser do
 
 Jcouchdb comes with a set of unit tests which you can also take a look at to see examples of how to use jcouchdb (most importantly [http://jcouchdb.googlecode.com/svn/trunk/test/org/jcouchdb/db/LocalDatabaseTestCase.java org.jcouchdb.db.LocalDatabaseTestCase] which runs some integration tests against local CouchDB server.
 
+== Attachments ==
+The attachment mechanism mirrors the functionality present in couchdb itself.
+You will only be able to indirectly use the data property contained in {@link Attachment} to create
+attachments inlined with the document. When you query a document with attachments, the attachments will
+have a <code>null</code> data property and the stub property will be set to <code>true</code>.
+
+This limitation has its origin in the way couchdb works and is deliberately kept that way to not introduce additional queries.
+
+To get the actual content of the attachment back, you have to use the 
+{{{
+[http://fforw.de/static/jcouchdb-javadoc/org/jcouchdb/db/Database.html#getAttachment(java.lang.String,%20java.lang.String) Database#getMethod(String,String)]
+
+}}}
+
 == CouchdDBUpdater ==
 
 In 0.7.1 I've added a small tool class that can help you update your design documents / views while being able to edit them in your favourite editor.
