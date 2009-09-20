@@ -123,6 +123,12 @@ import org.jcouchdb.document.ViewResult;
     // query a view including its documents and convert the documents to FooDocument
     ViewAndDocumentsResult<Object,FooDocument> result = db.queryViewAndDocuments("foo/byValue", Object.class, FooDocument.class, null, null);
 
+    // query views by keys allows you to specify a list of keys you want to fetch
+    // Here we fetch the keys "doc-1" and "doc-2" out of the view "foo/byValue"
+    // (The key is the first argument given to the emit in your map function)
+    ViewResult<FooDocument> result = db.queryViewByKeys("foo/byValue", FooDocument.class, Arrays.asList("doc-1","doc-2"), null, null);
+
+
 }}}
 
 The view result gives you access to the total rows and offset of the query and to the converted documents. 
