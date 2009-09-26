@@ -1,4 +1,0 @@
-function()
-{
-	return 0;
-}
