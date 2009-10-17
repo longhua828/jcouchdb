@@ -1,12 +1,18 @@
 #summary A guide to the hood example application
 #labels Featured
 
+The project contains eclipse project files . So the easiest way to get an overview over hood is to just import it into Eclipse with "File / Import.. -> Existing Projects into Workspace". 
+
+Here is a little overview over the files and directories in the project. if you don't
+want to use eclipse you might like the ant build script provided.
+
 {{{
 WebContent
     WEB-INF
         config
             couchdb-config.xml      CouchDB server and database config
-            couchdb-services.xml    CouchDBUpdater config
+            couchdb-services.xml    CouchDBUpdater config that pushes the source views to
+                                    the CouchDB server
             security-config.xml     Spring security
             services-config.xml     svenson JSON config, object services
             webmvc-config.xml       Spring WebMVC config. 
@@ -49,6 +55,12 @@ src                     source code
     ...                 
 test                    test source code
     ...
-
                                     
 }}}
+
+The project uses Spring WebMVC and Spring Security. The latter is currently not really useful, but was left in to show how it can be easily done.
+
+Users not being interested in doing web applications might just want to look at the spring
+configs couchdb-config.xml, couchdb-services.xml and services-config.xml if they're interested in the non-web spring configuration. couchdb-services contains a spring configuration for the CouchDBUpdater that can sync view sources with CouchDB. See `/hood/WebContent/WEB-INF/designdocs` for an example of how to do it.
+
+All other couchdb related code is is `/hood/src/org/hood/HoodServiceImpl.java`, `/hood/src/org/hood/LocationServiceImpl.java` and `/hood/src/org/hood/auth/AppUserDetailsService.java` 
