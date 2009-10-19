@@ -153,7 +153,7 @@ public class AppDocument extends BaseDocument
 
 The code above shows AppDocument. It implements a read-only JSON-Property that automatically prints the current instance's simple name as "docType" property. Since this is readonly, it only influences the JSON generation of AppDocument instances.
 
-On parsing documents with our globally configured JSONParser decide the actual type to parse into based on exactly the same read-only Property, thus giving us a full circle Java -> JSON -> Java. 
+On parsing documents with our globally configured JSONParser decide the actual type to parse into based on exactly the same read-only property. When using the global config, we now can just convert AppDocuments into JSON and can automatically convert that JSON back into the correct AppDocument derived type (which we also enforce).
 
 Full circle configs are useful in situations where you have objects that you need to represent on both the java side as well as the client side or in CouchDB. For other scenarios it might make sense to only support one direction of conversion, or it might be useful to define a JSONifier or implement JSONable and let it generate a JSON structure that is a convenient transformation from the Java side. Larger applications might even require multiple JSON/Java circles etc. It's all your choice, your design.
 
